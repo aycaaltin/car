@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector , useDispatch} from 'react-redux'
-import { removeCar } from '../store/slices/carsSlice';
+import { removeCar, updateCar} from '../store/slices/carsSlice';
 
 
 function CarList() {
@@ -19,6 +19,12 @@ function CarList() {
     dispatch(removeCar(car.id))
   };
 
+  const handleCarUpdate = (car) => {
+    dispatch(updateCar(car.id));
+    alert(`${car.name} Güncellendi` );
+
+  };
+
   const renderedCars = cars.map((car) => {
 
     const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
@@ -32,8 +38,13 @@ function CarList() {
       >
         Delete
       </button>
+      <button className='buttonn' onClick={() => handleCarUpdate(car)}>
+         Update
+      </button>
       </div>
+      
     )
+    
   });
   return (
     <div className='car-list'>
@@ -41,6 +52,7 @@ function CarList() {
       <hr/>
       CarList
     </div>
+    
   )
 }
 

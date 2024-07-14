@@ -3,7 +3,8 @@ import {
     carsReducer,
     addCar,
     removeCar,
-    changeSearchTerm
+    changeSearchTerm,
+    updateCar
 } from './slices/carsSlice';
 import {
     formReducer,
@@ -18,4 +19,4 @@ const store = configureStore({
     }
 });
 
-export { store,changeName,changeCost,addCar, removeCar, changeSearchTerm};
+export { store,changeName,changeCost,addCar, removeCar, changeSearchTerm,updateCar};

@@ -19,8 +19,7 @@ function CarForm () {
       dispatch(changeCost(carCost));
     };
     const handleSubmit  = (event) => {
-        event.prevent.default();
-
+      event.preventDefault();
         dispatch(addCar({ name , cost }))
         dispatch (changeCost(0));
         dispatch (changeName(''));
