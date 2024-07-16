@@ -17,17 +17,21 @@ const carsSlice = createSlice({
             id: nanoid(),
           });
         },
-        removeCar(state,action) {
-           const updated = state.data.filter((car)=>{
-            return car.id !== action.payload
+        removeCar(state, action) {
+           const updated = state.data.filter((car) => {
+            return car.id !== action.payload;
            });
            state.data = updated;
         },
         updateCar(state, action) {
-         /*  const { id, updatedCar } = action.payload;
-          state.cars = state.cars.map(car => (car.id === id ? updatedCar : car)); */
+            const { id, name, cost } = action.payload;
+            const carIndex = state.data.findIndex(car => car.id === id);
+            if (carIndex >= 0) {
+                state.data[carIndex] = { ...state.data[carIndex], name, cost };
+            }
         },
     }
-}) 
- export const { changeSearchTerm, addCar, removeCar, updateCar } = carsSlice.actions;
- export const carsReducer = carsSlice.reducer;
+});
+
+export const { changeSearchTerm, addCar, removeCar, updateCar } = carsSlice.actions;
+export const carsReducer = carsSlice.reducer;
